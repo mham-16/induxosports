@@ -15,7 +15,7 @@
   --orange-dim: #C7371F;
   --orange-glow:rgba(255,70,48,.35);
 
-  --font-display: 'Anton', sans-serif;
+  --font-display: 'Bungee', sans-serif;
   --font-body:    'Manrope', sans-serif;
   --font-mono:    'Space Mono', monospace;
 
@@ -126,8 +126,10 @@ h1,h2,h3,.display{
 .header-row{display:flex;align-items:center;justify-content:space-between;gap:24px;}
 .brand{
   font-family:var(--font-display);
-  font-size:22px;letter-spacing:.03em;
+  font-size:20px;letter-spacing:.02em;
   display:flex;align-items:baseline;gap:8px;
+  -webkit-text-stroke: 1px rgba(255,255,255,.4);
+  text-shadow: 0 1px 0 rgba(0,0,0,.5);
 }
 .brand span{color:var(--orange);}
 .nav-links{display:flex;gap:34px;align-items:center;}
@@ -448,7 +450,7 @@ footer{background:var(--ink-soft);border-top:1px solid var(--ink-line);padding:7
 .footer-grid li a{color:#C9CBD3;transition:color .2s;}
 .footer-grid li a:hover{color:var(--orange);}
 .footer-bottom{
-  margin-top:60px;padding-top:24px;border-top:1px solid var(--ink-line);
+  margin-top:60px;margin-bottom:30px;padding-top:24px;border-top:1px solid var(--ink-line);
   display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
   font-family:var(--font-mono);font-size:11.5px;color:var(--steel);letter-spacing:.04em;
 }
