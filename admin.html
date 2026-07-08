@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — Induxo Sports</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@400;500;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="admin">
+
+  <div id="page-loader"><div class="loader-mark">INDUXO<div class="bar"></div></div></div>
+  <div id="site-header"></div>
+
+  <section class="admin-shell">
+    <div class="wrap">
+
+      <!-- LOGIN GATE (only shown when Supabase is connected) -->
+      <div id="login-gate" style="max-width:380px;margin:0 auto;display:none;">
+        <div class="reveal in" style="text-align:center;margin-bottom:24px;">
+          <span class="eyebrow" style="justify-content:center;">Owner access</span>
+          <h1 class="section-title" style="font-size:36px;">Admin Login</h1>
+        </div>
+        <div class="admin-card">
+          <div class="field"><label for="lg-email">Email</label><input id="lg-email" type="email" placeholder="you@induxo.com"></div>
+          <div class="field"><label for="lg-pass">Password</label><input id="lg-pass" type="password" placeholder="••••••••"></div>
+          <button class="btn btn-primary" style="width:100%;justify-content:center;" id="lg-btn">Sign In</button>
+          <p class="muted" style="font-size:12px;margin-top:14px;">Create this login user once in your Supabase Dashboard → Authentication → Users → Add user.</p>
+        </div>
+      </div>
+
+      <!-- ADMIN PANEL -->
+      <div id="admin-panel" style="display:none;">
+        <div class="section-head reveal in">
+          <div>
+            <span class="eyebrow">Store manager</span>
+            <h1 class="section-title" style="font-size:40px;">Manage Store</h1>
+          </div>
+          <button class="btn btn-ghost" id="logout-btn">Sign Out</button>
+        </div>
+
+        <div id="demo-banner" style="display:none;background:var(--ink-soft);border:1px solid var(--ink-line);border-left:4px solid var(--orange);padding:16px 20px;border-radius:6px;margin-bottom:34px;font-size:13.5px;color:var(--steel);">
+          Demo mode — Supabase isn't connected yet, so changes here (including pictures) are saved to this browser only and skip the login screen.
+          Add your Supabase keys in <code>js/config.js</code> to go live, store pictures in the cloud, and require a real login.
+        </div>
+
+        <div class="tabs">
+          <button class="tab-btn active" data-tab="categories">Categories</button>
+          <button class="tab-btn" data-tab="products">Products</button>
+        </div>
+
+        <!-- CATEGORIES TAB -->
+        <div class="admin-grid" id="tab-categories">
+          <div class="admin-card">
+            <h3 style="font-size:18px;margin-bottom:18px;">Add / Edit Category</h3>
+            <form id="cat-form">
+              <input type="hidden" id="cat-id">
+              <div class="field"><label for="cat-name">Name</label><input id="cat-name" required placeholder="e.g. Winter Hoodies"></div>
+              <div class="field"><label for="cat-tag">Tag (order label, e.g. 05)</label><input id="cat-tag" placeholder="05"></div>
+              <div class="field"><label for="cat-desc">Short description</label><input id="cat-desc" placeholder="One line shown on the category card"></div>
+              <div class="field">
+                <label for="cat-img-file">Category picture</label>
+                <input type="hidden" id="cat-existing-img">
+                <input id="cat-img-file" type="file" accept="image/*">
+                <img id="cat-img-preview" alt="" style="display:none;margin-top:12px;width:100%;max-width:220px;aspect-ratio:4/5;object-fit:cover;border-radius:6px;border:1px solid var(--ink-line);">
+              </div>
+              <button class="btn btn-primary" style="width:100%;justify-content:center;" type="submit">Save Category</button>
+            </form>
+          </div>
+          <div class="admin-card">
+            <h3 style="font-size:18px;margin-bottom:18px;">Existing Categories</h3>
+            <div id="cat-list"></div>
+          </div>
+        </div>
+
+        <!-- PRODUCTS TAB -->
+        <div class="admin-grid" id="tab-products" style="display:none;">
+          <div class="admin-card">
+            <h3 style="font-size:18px;margin-bottom:18px;">Add / Edit Product</h3>
+            <form id="prod-form">
+              <input type="hidden" id="prod-id">
+              <div class="field"><label for="prod-cat">Category</label><select id="prod-cat" required></select></div>
+              <div class="field"><label for="prod-name">Product name</label><input id="prod-name" required placeholder="e.g. Momentum Dry-Fit Tee"></div>
+              <div class="field"><label for="prod-price">Price (optional — for your own records, not shown to customers)</label><input id="prod-price" type="number" step="0.01" placeholder="24"></div>
+              <div class="field"><label for="prod-taglabel">Badge (optional)</label><input id="prod-taglabel" placeholder="New / Bestseller / Limited"></div>
+              <div class="field"><label for="prod-desc">Description</label><textarea id="prod-desc" rows="3" placeholder="Short product description"></textarea></div>
+              <div class="field">
+                <label for="prod-img-file">Product picture</label>
+                <input type="hidden" id="prod-existing-img">
+                <input id="prod-img-file" type="file" accept="image/*">
+                <img id="prod-img-preview" alt="" style="display:none;margin-top:12px;width:100%;max-width:220px;aspect-ratio:1/1;object-fit:cover;border-radius:6px;border:1px solid var(--ink-line);">
+              </div>
+              <button class="btn btn-primary" style="width:100%;justify-content:center;" type="submit">Save Product</button>
+            </form>
+          </div>
+          <div class="admin-card">
+            <h3 style="font-size:18px;margin-bottom:18px;">Existing Products</h3>
+            <div id="prod-list"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div id="site-footer"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/config.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/db.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

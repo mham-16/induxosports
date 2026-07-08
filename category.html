@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Category — Induxo Sports</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@400;500;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .cat-banner{
+    height:46vh;min-height:320px;position:relative;display:flex;align-items:flex-end;
+    background-size:cover;background-position:center;margin-top:0;
+  }
+  .cat-banner::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,14,20,.2),rgba(11,14,20,.96));}
+  .cat-banner .wrap{position:relative;z-index:1;padding-bottom:40px;}
+</style>
+</head>
+<body data-page="categories">
+
+  <div id="page-loader"><div class="loader-mark">INDUXO<div class="bar"></div></div></div>
+  <div id="site-header"></div>
+
+  <section class="cat-banner" id="cat-banner-img" style="padding-top:110px;">
+    <div class="wrap reveal">
+      <span class="eyebrow">Category</span>
+      <h1 class="section-title" id="cat-heading">Loading…</h1>
+      <p class="muted" id="cat-desc" style="max-width:560px;"></p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="product-grid" id="product-grid">
+        <div class="empty-state"><h3>Loading products…</h3></div>
+      </div>
+    </div>
+  </section>
+
+  <div id="site-footer"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/config.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/db.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/products.js"></script>
+  <script>
+    mountCategoryPage();
+  </script>
+</body>
+</html>
