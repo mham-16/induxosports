@@ -23,7 +23,7 @@
       <div class="hero-panel">
         <span class="eyebrow">Worldwide Export · Order by DM</span>
         <h1 class="hero-title">Gear built for<br>the <span class="accent">next rep.</span></h1>
-        <p class="hero-sub">From factory to your feed — quality sportswear. Ready to order.</p>
+        <p class="hero-sub">From factory to your feed — quality sportswear and streetwear. Ready to order.</p>
         <div class="hero-actions">
           <a href="#categories" class="btn btn-primary">Shop Categories</a>
           <a href="#about" class="btn btn-ghost">Our Story</a>
@@ -37,13 +37,19 @@
     <div class="marquee-track">
       <span>Shop <b>Training Tees</b></span>
       <span>Shop <b>Track Jackets</b></span>
-      <span>Shop <b>Performance Shorts</b></span>
+      <span>Shop <b>Graphic Tees</b></span>
+      <span>Shop <b>Cargo Pants</b></span>
       <span>Shop <b>Hoodies</b></span>
+      <span>Shop <b>Performance Shorts</b></span>
+      <span>Shop <b>Denim</b></span>
       <span>Shop <b>Compression Wear</b></span>
       <span>Shop <b>Training Tees</b></span>
       <span>Shop <b>Track Jackets</b></span>
-      <span>Shop <b>Performance Shorts</b></span>
+      <span>Shop <b>Graphic Tees</b></span>
+      <span>Shop <b>Cargo Pants</b></span>
       <span>Shop <b>Hoodies</b></span>
+      <span>Shop <b>Performance Shorts</b></span>
+      <span>Shop <b>Denim</b></span>
       <span>Shop <b>Compression Wear</b></span>
     </div>
   </div>
@@ -55,7 +61,7 @@
         <span class="eyebrow">About Us</span>
           <h2 class="section-title" style="font-size:clamp(30px,4.5vw,46px);">Built here. Worn everywhere.</h2>
           <p class="muted" style="margin-top:14px;font-size:15.5px;max-width:460px;">
-            We manufacture performance sportswear in-house, quality-check every batch ourselves, and export it worldwide — sold straight to you.
+            We manufacture performance sportswear and streetwear in-house, quality-check every batch ourselves, and export it worldwide — sold straight to you.
           </p>
           <div class="value-list">
               <div class="value-item"><b>Manufactured in-house</b></div>
@@ -165,7 +171,9 @@
       };
       try{
         await saveContactMessage(data);
-        showToast("Message sent — we'll get back to you soon.");
+        const waText = `Hi! Message from the Induxo Sports website:\n\nName: ${data.name}\nContact: ${data.contact}\nMessage: ${data.message}`;
+        window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(waText)}`, "_blank", "noopener");
+        showToast("Opening WhatsApp with your message filled in.");
         form.reset();
       }catch(err){
         showToast("Something went wrong. Please try Instagram or WhatsApp instead.");
