@@ -66,7 +66,7 @@ function renderFooter(){
       <div>
         <a href="index.html" class="brand" style="margin-bottom:14px;display:inline-block;">INDUXO<span>.</span>SPORTS</a>
         <p class="muted" style="max-width:280px;font-size:14px;margin-top:6px;">
-          Sportswear imported worldwide. Every order is confirmed directly with our team on Instagram or WhatsApp.
+          Sportswear and streetwear exported worldwide. Every order is confirmed directly with our team on Instagram or WhatsApp.
         </p>
       </div>
       <div>
@@ -93,7 +93,7 @@ function renderFooter(){
     </div>
     <div class="wrap footer-bottom">
       <span>&copy; ${year} Induxo Sports. All rights reserved.</span>
-      <span>Built for worldwide import &amp; order-by-DM.</span>
+      <span>Built for worldwide export &amp; order-by-DM.</span>
     </div>
   `;
 }
